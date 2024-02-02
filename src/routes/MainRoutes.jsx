@@ -12,7 +12,7 @@ import AddProduct from "../components/product/AddProduct";
 const MainRoutes = () => {
 	const PUBLIC_ROUTES = [
 		{ id: 1, link: "/", element: <HomePage /> },
-		{ id: 2, link: "/produts", element: <ProductsPage /> },
+		{ id: 2, link: "/products", element: <ProductsPage /> },
 		{ id: 3, link: "/about", element: <AboutPage /> },
 		{ id: 4, link: "*", element: <NotFoundPage /> },
 		{ id: 5, link: "/cart", element: <Cart /> },

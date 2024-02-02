@@ -27,11 +27,22 @@ const ProductContextProvider = ({ children }) => {
 	//! create
 	async function addProduct(newProduct) {
 		await axios.post(API, newProduct);
-		navigate("/product");
+		navigate("/products");
 	}
+
+	//! get products
+	const getProducts = async () => {
+		const { data } = await axios(API);
+		dispatch({
+			type: ACTIONS.GET_PRODUCTS,
+			payload: data,
+		});
+	};
 
 	const values = {
 		addProduct,
+		getProducts,
+		products: state.products,
 	};
 	return (
 		<productContext.Provider value={values}>{children}</productContext.Provider>

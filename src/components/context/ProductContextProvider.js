@@ -14,7 +14,7 @@ function reducer(state = INIT_STATE, action) {
 	switch (action.type) {
 		case ACTIONS.GET_PRODUCTS:
 			return { ...state, products: action.payload };
-		case ACTIONS.GET_ONE_PRODUCTS:
+		case ACTIONS.GET_ONE_PRODUCT:
 			return { ...state, oneProduct: action.payload };
 		default:
 			return state;
@@ -39,9 +39,31 @@ const ProductContextProvider = ({ children }) => {
 		});
 	};
 
+	//! delete
+	const deleteProduct = async (id) => {
+		await axios.delete(`${API}/${id}`);
+		getProducts();
+	};
+
+	//! get one product
+	const getOneProduct = async (id) => {
+		const { data } = await axios(`${API}/${id}`);
+		dispatch({
+			type: ACTIONS.GET_ONE_PRODUCT,
+			payload: data,
+		});
+	};
+	const editProduct = async (id, editedProduct) => {
+		await axios.patch(`${API}/${id}`, editedProduct);
+		navigate("/products");
+	};
 	const values = {
 		addProduct,
 		getProducts,
+		deleteProduct,
+		getOneProduct,
+		editProduct,
+		oneProduct: state.oneProduct,
 		products: state.products,
 	};
 	return (

@@ -19,7 +19,7 @@ const ProductList = () => {
 				}}
 			>
 				{products.map((elem) => (
-					<ProductCard key={elem.id} {...elem} />
+					<ProductCard key={elem.id} elem={elem} />
 				))}
 			</Box>
 		</>

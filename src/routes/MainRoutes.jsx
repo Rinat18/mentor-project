@@ -8,6 +8,7 @@ import AuthPage from "../pages/AuthPage";
 import { Route, Routes } from "react-router-dom";
 import ContactsPage from "../pages/ContactsPage";
 import AddProduct from "../components/product/AddProduct";
+import EditPage from "../pages/EditPage";
 
 const MainRoutes = () => {
 	const PUBLIC_ROUTES = [
@@ -19,6 +20,7 @@ const MainRoutes = () => {
 		{ id: 6, link: "/auth", element: <AuthPage /> },
 		{ id: 7, link: "/contacts", element: <ContactsPage /> },
 		{ id: 8, link: "/add-product", element: <AddProduct /> },
+		{ id: 9, link: "/edit-product/:id", element: <EditPage /> },
 	];
 	return (
 		<>

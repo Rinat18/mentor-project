@@ -1,23 +1,28 @@
+import { AddShoppingCart } from "@mui/icons-material";
 import {
+	Button,
 	Card,
 	CardActionArea,
 	CardContent,
 	CardMedia,
+	IconButton,
 	Rating,
 	Stack,
 	Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
+import Detail from "./Detail";
+import { useProduct } from "../context/ProductContextProvider";
+import { useNavigate } from "react-router-dom";
 
-const ProductCard = ({ title, description, price, image }) => {
+const ProductCard = ({ elem }) => {
+	const { deleteProduct } = useProduct();
+	const navigate = useNavigate();
+	const [open, setOpen] = useState(false);
+	const handleOpen = () => setOpen(true);
+	const handleClose = () => setOpen(false);
 	return (
 		<>
-			{/* <li>
-				<img src={image} alt="image" />
-				<h2>{title}</h2>
-				<h3>{description}</h3>
-				<h3>{price}</h3>
-			</li> */}
 			<Card
 				sx={{
 					height: 450,
@@ -26,13 +31,13 @@ const ProductCard = ({ title, description, price, image }) => {
 					margin: "2%",
 				}}
 			>
-				<CardActionArea>
+				<CardActionArea onClick={handleOpen}>
 					<CardMedia
 						sx={{
 							height: 240,
 							borderRadius: 4,
 						}}
-						image={image}
+						image={elem.image}
 					/>
 				</CardActionArea>
 				<CardContent
@@ -46,18 +51,38 @@ const ProductCard = ({ title, description, price, image }) => {
 						fontWeight={700}
 						component="div"
 					>
-						{title}
+						{elem.title}
 					</Typography>
 					<Typography color="black" fontSize={24} fontWeight={700}>
-						{description}
+						{elem.description}
 					</Typography>
 					<Stack>
 						<Rating name="half-rating" defaultValue={0} precision={1} />
 					</Stack>
 					<Typography color="black" fontSize={24} fontWeight={700}>
-						{price}$
+						{elem.price}$
 					</Typography>
+					<Button
+						onClick={() => deleteProduct(elem.id)}
+						color="secondary"
+						variant="outlined"
+						size="medium"
+					>
+						DELETE
+					</Button>
+					<Button
+						onClick={() => navigate(`/edit-product/${elem.id}`)}
+						color="primary"
+						variant="outlined"
+						size="medium"
+					>
+						EDIT
+					</Button>
+					<IconButton>
+						<AddShoppingCart />
+					</IconButton>
 				</CardContent>
+				<Detail open={open} handleClose={handleClose} elem={elem} />
 			</Card>
 		</>
 	);

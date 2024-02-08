@@ -1,0 +1,181 @@
+{
+  "products": [
+    {
+      "title": "Обувь",
+      "description": "Asics Gel 1090",
+      "price": 120,
+      "image": "https://f-asc-l.mncdn.com/livephotos/33/1202A385-100/1202A385-100_03_4.jpg",
+      "id": 1
+    },
+    {
+      "title": "Обувь",
+      "description": "Adidas",
+      "price": 89,
+      "image": "https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/18374202/2022/8/10/6b46da84-7c15-47bf-b634-e28d502ce5fd1660132570372-ADIDAS-Men-Black-Woven-Design-Galaxy-6-Running-Shoes-4971660-1.jpg",
+      "id": 2
+    },
+    {
+      "title": "Обувь",
+      "description": "Nike Air",
+      "price": 110,
+      "image": "https://static.nike.com/a/images/f_auto/dpr_3.0,cs_srgb/h_500,c_limit/g1ljiszo4qhthfpluzbt/nike-joyride.jpg",
+      "id": 3
+    },
+    {
+      "title": "Обувь",
+      "description": "Puma",
+      "price": 99,
+      "image": "https://assets.ajio.com/medias/sys_master/root/20231117/n1mv/6556c08bafa4cf41f58f89d7/-473Wx593H-466807731-silver-MODEL.jpg",
+      "id": 4
+    },
+    {
+      "title": "Обувь",
+      "description": "Mizuno",
+      "price": 100,
+      "image": "https://www.holabirdsports.com/cdn/shop/collections/hero_mizuno-running_30d5b371-3e14-452f-bfbf-0fedfe21fa13_600x600_crop_center.jpg?v=1702066685",
+      "id": 5
+    },
+    {
+      "title": "Спортивка",
+      "category": "Спортивка",
+      "description": "Adidas",
+      "price": 80,
+      "image": "https://images.satu.kz/148009956_w600_h600_148009956.jpg",
+      "id": 6
+    },
+    {
+      "title": "Футболка",
+      "category": "Мужская одежда",
+      "description": "Adidas",
+      "price": 50,
+      "image": "https://fridaywear.ru/upload/resize_cache/webp/upload/iblock/1cb/pb2bjgt41206rz1ol2a2yc01cdkmgbq3.webp",
+      "id": 7
+    },
+    {
+      "title": "Кепки",
+      "category": "Кепки",
+      "description": "Adidas",
+      "price": 20,
+      "image": "https://stores.kg/_next/image?url=https%3A%2F%2Fdocs.stores.kg%2Fimages%2Fproduct_images%2F63d0cb272ae33_pic-3.png&w=640&q=75",
+      "id": 8
+    },
+    {
+      "title": "Свитер",
+      "category": "Свитер",
+      "description": "Adidas",
+      "price": 50,
+      "image": "https://sportmagazin.net/upload/iblock/dfe/dfe19c1f4d235691b052c9222554a63c.jpg",
+      "id": 9
+    },
+    {
+      "title": "Спортивка",
+      "category": "Спортивка",
+      "description": "Adidas",
+      "price": 80,
+      "image": "https://www.tradeinn.com/f/13943/139439186/adidas-originals-adicolor-%D0%94%D0%B5%D1%82%D1%81%D0%BA%D0%B8%D0%B9-%D1%81%D0%BF%D0%BE%D1%80%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9-%D0%BA%D0%BE%D1%81%D1%82%D1%8E%D0%BC.jpg",
+      "id": 10
+    },
+    {
+      "title": "Обувь",
+      "category": "Обувь",
+      "description": "Asics Gel-Ventura",
+      "price": 90,
+      "image": "https://www.asics.com/dw/image/v2/BBTN_PRD/on/demandware.static/-/Library-Sites-shared-eu-library/default/dwfb0952f8/1_asics/tile-large/asics-venture-lp-largetiles-03232021-2.jpg",
+      "id": 11
+    },
+    {
+      "title": "Шапка",
+      "category": "Шапки",
+      "description": "Nike ",
+      "price": 30,
+      "image": "https://main-cdn.sbermegamarket.ru/big1/hlr-system/171847123/100025905881b0.jpg",
+      "id": 12
+    },
+    {
+      "title": "Обувь",
+      "category": "Обувь",
+      "description": "Puma",
+      "price": 70,
+      "image": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa/global/377970/13/sv01/fnd/TUR/w/1000/h/1000/fmt/png.jpg",
+      "id": 13
+    },
+    {
+      "title": "Обувь",
+      "category": "Обувь",
+      "description": "Nike ",
+      "price": 100,
+      "image": "https://media.wired.com/photos/63728604691ed08cc4b98976/master/pass/Nike-Swoosh-News-Gear.jpg",
+      "id": 14
+    },
+    {
+      "title": "Спортивка",
+      "category": "Спортивка",
+      "description": "Asics",
+      "price": 79,
+      "image": "https://images.satu.kz/171186421_w200_h200_muzhskie-sportivnye-kostyumy.jpg",
+      "id": 15
+    },
+    {
+      "title": "Свитер",
+      "category": "Свитер",
+      "description": "Nike ",
+      "price": 59,
+      "image": "https://ir.ozone.ru/s3/multimedia-k/c1000/6383913020.jpg",
+      "id": 16
+    },
+    {
+      "title": "Шапки",
+      "category": "Шапки",
+      "description": "Puma",
+      "price": 20,
+      "image": "https://a.lmcdn.ru/img600x866/P/U/PU053CUKNC44_3673139_1_v2.jpg",
+      "id": 17
+    },
+    {
+      "title": "Кепка",
+      "category": "Кепки",
+      "description": "Mizuno",
+      "price": 25,
+      "image": "https://russiangolfer.ru/3779-thickbox_default/kepka-mizuno-chrome.jpg",
+      "id": 18
+    },
+    {
+      "title": "Обувь",
+      "category": "Обувь",
+      "description": "Adidas",
+      "price": 110,
+      "image": "https://media.finishline.com/i/finishline/FX1763_400_P1?$default$",
+      "id": 19
+    },
+    {
+      "title": "Спортивка",
+      "category": "Спортивка",
+      "description": "Nike ",
+      "price": 79,
+      "image": "https://www.sport-life124.ru/image/cache/catalog/vesennjajaodezhda/kostyum/96ac1ff9-41c0-4879-9d45-9bf325c59f38-1000x1340.png",
+      "id": 20
+    }
+  ],
+  "category": [
+    {
+      "name": "a",
+      "id": 2
+    },
+    {
+      "name": "b",
+      "id": 5
+    },
+    {
+      "name": "a",
+      "id": 6
+    },
+    {
+      "name": "Kepka",
+      "id": 7
+    },
+    {
+      "name": "Футболка",
+      "id": 8
+    }
+  ]
+}

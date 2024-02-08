@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useProduct } from "../context/ProductContextProvider";
 import { Box, Button, TextField, Typography } from "@mui/material";
+import { Category } from "@mui/icons-material";
+import CategorySelect from "./CategorySelect";
 
 const AddProduct = () => {
-	const { addProduct } = useProduct();
+	const { addProduct, getCategories, categories } = useProduct();
 	const [product, setProduct] = useState({
 		title: "",
 		description: "",
+		category: "",
 		price: 0,
 		image: "",
 	});
+	useEffect(() => {
+		getCategories()
+	},[])
 	function handleInput(e) {
 		if (e.target.name === "price") {
 			const obj = {
@@ -51,6 +57,7 @@ const AddProduct = () => {
 					label="Title"
 					variant="outlined"
 				/>
+				<CategorySelect categories={categories} handleInput={handleInput}/>
 				<TextField
 					onChange={handleInput}
 					fullWidth

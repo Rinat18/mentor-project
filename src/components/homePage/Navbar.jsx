@@ -13,6 +13,8 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Badge, MenuItem } from "@mui/material";
+import { useCart } from "../context/CartContextProvider";
+import { useEffect } from "react";
 
 const pages = [
 	{ id: 1, title: "Products", link: "/products" },
@@ -23,8 +25,12 @@ const pages = [
 function Navbar() {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
-
+	const {addProductToCart, getProductsCountInCart} = useCart()
 	const [badgeCount, setBadgeCount] = React.useState(0);
+
+	useEffect(() => {
+		setBadgeCount(getProductsCountInCart())
+	},[addProductToCart])
 
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
@@ -129,7 +135,7 @@ function Navbar() {
 					<Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}></Box>
 					<Typography sx={{ color: "white" }}></Typography>
 					<Link to={"/cart"}>
-						<Badge color="success">
+						<Badge  badgeContent={badgeCount} color="success">
 							<ShoppingCartIcon sx={{ color: "white" }} />
 						</Badge>
 					</Link>

@@ -1,91 +1,99 @@
 import { AddShoppingCart } from "@mui/icons-material";
 import {
-	Button,
-	Card,
-	CardActionArea,
-	CardContent,
-	CardMedia,
-	IconButton,
-	Rating,
-	Stack,
-	Typography,
+  Button,
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  IconButton,
+  Rating,
+  Stack,
+  Typography,
 } from "@mui/material";
 import React, { useState } from "react";
 import Detail from "./Detail";
 import { useProduct } from "../context/ProductContextProvider";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../context/CartContextProvider";
 
 const ProductCard = ({ elem }) => {
-	const { deleteProduct } = useProduct();
-	const navigate = useNavigate();
-	const [open, setOpen] = useState(false);
-	const handleOpen = () => setOpen(true);
-	const handleClose = () => setOpen(false);
-	return (
-		<>
-			<Card
-				sx={{
-					height: 450,
-					width: { md: "30vw", lg: "19vw" },
-					boxShadow: "none",
-					margin: "2%",
-				}}
-			>
-				<CardActionArea onClick={handleOpen}>
-					<CardMedia
-						sx={{
-							height: 240,
-							borderRadius: 4,
-						}}
-						image={elem.image}
-					/>
-				</CardActionArea>
-				<CardContent
-					sx={{
-						padding: "20px 5px 0 5px",
-					}}
-				>
-					<Typography
-						variant="h5"
-						fontSize={20}
-						fontWeight={700}
-						component="div"
-					>
-						{elem.title}
-					</Typography>
-					<Typography color="black" fontSize={24} fontWeight={700}>
-						{elem.description}
-					</Typography>
-					<Stack>
-						<Rating name="half-rating" defaultValue={0} precision={1} />
-					</Stack>
-					<Typography color="black" fontSize={24} fontWeight={700}>
-						{elem.price}$
-					</Typography>
-					<Button
-						onClick={() => deleteProduct(elem.id)}
-						color="secondary"
-						variant="outlined"
-						size="medium"
-					>
-						DELETE
-					</Button>
-					<Button
-						onClick={() => navigate(`/edit-product/${elem.id}`)}
-						color="primary"
-						variant="outlined"
-						size="medium"
-					>
-						EDIT
-					</Button>
-					<IconButton>
-						<AddShoppingCart />
-					</IconButton>
-				</CardContent>
-				<Detail open={open} handleClose={handleClose} elem={elem} />
-			</Card>
-		</>
-	);
+  const { deleteProduct } = useProduct();
+  const { addProductToCart, checkProductInCart } = useCart();
+  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  return (
+    <>
+      <Card
+        sx={{
+          height: 450,
+          width: { md: "30vw", lg: "19vw" },
+          boxShadow: "none",
+          margin: "2%",
+        }}
+      >
+        <CardActionArea onClick={handleOpen}>
+          <CardMedia
+            sx={{
+              height: 240,
+              borderRadius: 4,
+            }}
+            image={elem.image}
+          />
+        </CardActionArea>
+        <CardContent
+          sx={{
+            padding: "20px 5px 0 5px",
+          }}
+        >
+          <Typography
+            variant="h5"
+            fontSize={20}
+            fontWeight={700}
+            component="div"
+          >
+            {elem.title}
+          </Typography>
+          <Typography color="black" fontSize={24} fontWeight={700}>
+            {elem.description}
+          </Typography>
+          <Stack>
+            <Rating name="half-rating" defaultValue={0} precision={1} />
+          </Stack>
+          <Typography color="black" fontSize={24} fontWeight={700}>
+            {elem.price}$
+          </Typography>
+          <Button
+            onClick={() => deleteProduct(elem.id)}
+            color="secondary"
+            variant="outlined"
+            size="medium"
+          >
+            DELETE
+          </Button>
+          <Button
+            onClick={() => navigate(`/edit-product/${elem.id}`)}
+            color="primary"
+            variant="outlined"
+            size="medium"
+          >
+            EDIT
+          </Button>
+          <IconButton
+            sx={{
+              backgroundColor: checkProductInCart(elem.id) ? "black" : "",
+			  color: checkProductInCart(elem.id) ? "white" : "",
+            }}
+            onClick={() => addProductToCart(elem)}
+          >
+            <AddShoppingCart />
+          </IconButton>
+        </CardContent>
+        <Detail open={open} handleClose={handleClose} elem={elem} />
+      </Card>
+    </>
+  );
 };
 
 export default ProductCard;

@@ -11,7 +11,7 @@ import React, { useEffect } from "react";
 import { useProduct } from "../context/ProductContextProvider";
 
 const SideBar = () => {
-	const {categories, getCategories} = useProduct()
+	const {categories, getCategories, fetchByParams} = useProduct()
 	useEffect(() => {
 		getCategories()
 	},[])
@@ -24,6 +24,7 @@ const SideBar = () => {
           aria-labelledby="demo-radio-buttons-group-label"
           defaultValue="female"
           name="radio-buttons-group"
+          onChange={(e) => fetchByParams("category", e.target.value)}
         >
           <FormControlLabel value="All" control={<Radio />} label={"All"} />
 		  {categories.map((elem) => (

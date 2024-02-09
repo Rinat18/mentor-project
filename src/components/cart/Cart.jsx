@@ -12,11 +12,15 @@ import React, { useEffect } from "react";
 import { useCart } from "../context/CartContextProvider";
 
 const Cart = () => {
-  const { cart, getCart, changeProductCount } = useCart();
+  const { cart, getCart, changeProductCount, deleteProductFromCart } = useCart();
   useEffect(() => {
     getCart();
   }, []);
   console.log(cart);
+  const cartCliner = () => {
+    localStorage.removeItem("cart")
+    getCart()
+  }
   return (
     <TableContainer component={Paper}>
       <Table aria-label="simple table" sx={{ minWidth: 650 }}>
@@ -50,7 +54,7 @@ const Cart = () => {
                   </TableCell>
                   <TableCell align="right">{elem.subPrice}</TableCell>
                   <TableCell align="right">
-                    <Button>delete</Button>
+                    <Button onClick={() => deleteProductFromCart(elem.item.id)}>delete</Button>
                   </TableCell>
                 </TableRow>
               ))}
@@ -58,6 +62,7 @@ const Cart = () => {
           )}
         </TableBody>
       </Table>
+      <Button onClick={cartCliner}>BUY FOR NOW {cart.totalPrice}</Button>
     </TableContainer>
   );
 };

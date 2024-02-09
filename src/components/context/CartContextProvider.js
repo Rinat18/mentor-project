@@ -1,7 +1,12 @@
 import React, { createContext, useContext, useReducer } from "react";
 import Cart from "../cart/Cart";
 import { ACTIONS } from "../../helpers/consts";
-import { calcSubPrice, calcTotalPrice, getLocalStorage, getProductsCountInCart } from "../../helpers/function";
+import {
+  calcSubPrice,
+  calcTotalPrice,
+  getLocalStorage,
+  getProductsCountInCart,
+} from "../../helpers/function";
 import { json } from "react-router-dom";
 const cartContext = createContext();
 export const useCart = () => useContext(cartContext);
@@ -19,10 +24,11 @@ const reducer = (state = INIT_STATE, action) => {
 };
 const CartContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
-  
+
   //   ! GET
   const getCart = () => {
     let cart = getLocalStorage();
+
     if (!cart) {
       localStorage.setItem(
         "cart",
@@ -31,8 +37,12 @@ const CartContextProvider = ({ children }) => {
           totalPrice: 0,
         })
       );
+      cart = {
+        products: [],
+      };
       //   обновляем состояние
     }
+
     dispatch({
       type: ACTIONS.GET_CART,
       payload: cart,
@@ -44,12 +54,7 @@ const CartContextProvider = ({ children }) => {
     // получаем содержимое из  хранилища под ключом cart
     let cart = getLocalStorage();
     // проверка на сушествование данных в хранилище под ключом cart
-    if (!cart) {
-      cart = {
-        products: [],
-        totalPrice: 0,
-      };
-    }
+    
     // Создаем обьект, который добавим в localStorage в массив cart.products
     let newProduct = {
       item: product,
@@ -80,34 +85,44 @@ const CartContextProvider = ({ children }) => {
       payload: cart,
     });
   };
-  // функция для проверки товара в корзине 
+  // функция для проверки товара в корзине
   const checkProductInCart = (id) => {
     let cart = getLocalStorage();
-    if(cart){
-      let newCart = cart.products.filter((elem) => elem.item.id == id)
-      return newCart.length > 0 ? true : false
+    if (cart) {
+      let newCart = cart.products.filter((elem) => elem.item.id == id);
+      return newCart.length > 0 ? true : false;
     }
-  }
+  };
   // функция для изменения стоимости для одной позиции
-  const changeProductCount = (id,count) => {
+  const changeProductCount = (id, count) => {
     // получаем данные корзины из local storage
     let cart = getLocalStorage();
     // перебираем массив с продуктакми из корзины, и у продукта, у которого id совпадает с тем id? что передали при вызове, перезаписываем count(кол-во) и subPrice
     cart.products = cart.products.map((elem) => {
-      if(elem.item.id === id ){
-        console.log('123');
-        elem.count = count
-        elem.subPrice = calcSubPrice(elem)
+      if (elem.item.id === id) {
+        elem.count = count;
+        elem.subPrice = calcSubPrice(elem);
+        cart.totalPrice = calcTotalPrice(cart.products);
       }
-      return elem
-    })
-    localStorage.setItem("cart", JSON.stringify(cart))
+      return elem;
+    });
+    localStorage.setItem("cart", JSON.stringify(cart));
     dispatch({
       type: ACTIONS.GET_CART,
-      payload: cart
-    })
-
-  }
+      payload: cart,
+    });
+  };
+  // ! DELETE
+  const deleteProductFromCart = (id) => {
+    let cart = getLocalStorage();
+    cart.products = cart.products.filter((elem) => elem.item.id !== id);
+    cart.totalPrice = calcTotalPrice(cart.products);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    dispatch({
+      type: ACTIONS.GET_CART,
+      payload: cart,
+    });
+  };
   const values = {
     addProductToCart,
     cart: state.cart,
@@ -115,6 +130,7 @@ const CartContextProvider = ({ children }) => {
     checkProductInCart,
     getProductsCountInCart,
     changeProductCount,
+    deleteProductFromCart,
   };
   return <cartContext.Provider value={values}>{children}</cartContext.Provider>;
 };

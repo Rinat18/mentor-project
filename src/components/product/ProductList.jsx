@@ -21,7 +21,6 @@ const ProductList = () => {
     const end = begin + itemPerPage;
     return products.slice(begin, end);
   };
-  console.log(currentData());
   const handleChange = (e,value) => {
 	setPage(value)
   };

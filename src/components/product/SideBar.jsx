@@ -7,17 +7,25 @@ import {
   RadioGroup,
   TextField,
 } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useProduct } from "../context/ProductContextProvider";
+import { useSearchParams } from "react-router-dom";
 
 const SideBar = () => {
-	const {categories, getCategories, fetchByParams} = useProduct()
-	useEffect(() => {
-		getCategories()
-	},[])
+  const { categories, getCategories, fetchByParams } = useProduct();
+  const [ searchParams, setSearchParams ] = useSearchParams();
+  const [search, setSearch] = useState(searchParams.get("q") || "");
+  useEffect(() => {
+    setSearchParams({
+      q: search,
+    })
+  },[search])
+  useEffect(() => {
+    getCategories();
+  }, []);
   return (
     <Paper sx={{ p: 2 }}>
-      <TextField fullWidth variant="standard" label="search..." />
+      <TextField onChange={(e) => setSearch(e.target.value)} fullWidth variant="standard" label="search..." />
       <FormControl>
         <FormLabel id="demo-radio-buttons-group-label">Category</FormLabel>
         <RadioGroup
@@ -27,10 +35,14 @@ const SideBar = () => {
           onChange={(e) => fetchByParams("category", e.target.value)}
         >
           <FormControlLabel value="All" control={<Radio />} label={"All"} />
-		  {categories.map((elem) => (
-			<FormControlLabel key={elem.id} value={elem.name} label={elem.name}  control={<Radio />} />
-		  ))}
-
+          {categories.map((elem) => (
+            <FormControlLabel
+              key={elem.id}
+              value={elem.name}
+              label={elem.name}
+              control={<Radio />}
+            />
+          ))}
         </RadioGroup>
       </FormControl>
     </Paper>

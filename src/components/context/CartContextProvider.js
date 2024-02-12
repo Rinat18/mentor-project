@@ -123,6 +123,7 @@ const CartContextProvider = ({ children }) => {
       payload: cart,
     });
   };
+  
   const values = {
     addProductToCart,
     cart: state.cart,
@@ -136,3 +137,4 @@ const CartContextProvider = ({ children }) => {
 };
 
 export default CartContextProvider;
+

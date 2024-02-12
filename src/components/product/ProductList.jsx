@@ -9,7 +9,6 @@ const ProductList = () => {
 	//! SEARCH
 	const { getProducts, products } = useProduct();
 	const [searchParams, setSearchParams] = useSearchParams();
-	const [state, setState] = useState();
 	useEffect(() => {
 		getProducts();
 	}, [searchParams]);

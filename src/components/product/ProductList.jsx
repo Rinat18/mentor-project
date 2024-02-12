@@ -17,7 +17,6 @@ const ProductList = () => {
   const itemPerPage = 3;
   const count = Math.ceil(products.length / itemPerPage);
   console.log(count);
-  console.log(products);
   const currentData = () => {
     const begin = (page - 1) * itemPerPage;
     const end = begin + itemPerPage;

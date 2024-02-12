@@ -9,6 +9,7 @@ const ProductList = () => {
 	//! SEARCH
 	const { getProducts, products } = useProduct();
 	const [searchParams, setSearchParams] = useSearchParams();
+	const [pulll, setPulll] = useState();
 	useEffect(() => {
 		getProducts();
 	}, [searchParams]);

@@ -26,7 +26,6 @@ const ProductList = () => {
   console.log(currentData());
   const handleChange = (e,value) => {
 	setPage(value)
-    console.log(e);
   };
   return (
     <div>

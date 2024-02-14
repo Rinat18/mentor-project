@@ -23,6 +23,7 @@ const AddProduct = () => {
 				[e.target.name]: Number(e.target.value),
 			};
 			setProduct(obj);
+			console.log(product);
 		} else {
 			const obj = {
 				...product,

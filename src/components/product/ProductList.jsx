@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useProduct } from "../context/ProductContextProvider";
-import { Box } from "@mui/material";
-import ProductCard from "./ProductCard";
-import { useSearchParams } from "react-router-dom";
-import PaginationControlled from "./Pagination";
+import React, { useEffect, useState } from 'react';
+import { useProduct } from '../context/ProductContextProvider';
+import { Box } from '@mui/material';
+import ProductCard from './ProductCard';
+import { useSearchParams } from 'react-router-dom';
+import PaginationControlled from './Pagination';
 
 const ProductList = () => {
   //! SEARCH

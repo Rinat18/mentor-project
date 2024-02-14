@@ -6,3 +6,4 @@ export const ACTIONS = {
 	GET_CATEGORIES: "GET_CATEGORIES",
 	GET_CART: "GET_CACTEGORIES",
 };
+export const ADMIN = "admin@gmail.com"
